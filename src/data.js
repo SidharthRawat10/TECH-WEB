@@ -1,4 +1,5 @@
 export const categories = [
+  "Laptop",
   "AC",
   "Refrigerator",
   "Airfryer",
@@ -9,6 +10,33 @@ export const categories = [
 ];
 
 export const products = {
+  "Laptop": {
+    introText: "",
+    sections: [
+      {
+        title: "Best for Productivity",
+        items: [
+          {
+            name: "[Waiting for product details...]",
+            description: "Placeholder for productivity laptop.",
+            image: "/images/laptop_placeholder.png",
+            link: "#"
+          }
+        ]
+      },
+      {
+        title: "Best for Gaming",
+        items: [
+          {
+            name: "[Waiting for product details...]",
+            description: "Placeholder for gaming laptop.",
+            image: "/images/laptop_placeholder.png",
+            link: "#"
+          }
+        ]
+      }
+    ]
+  },
   "AC": {
     introText: "Firstly, it's very important for you to know which will work better for you: a split AC or a window AC. Many people don't know about this, but I'd love to explain it briefly. Honestly, both have different use cases. For example, a window AC is good for you if you live on the 1st or 2nd floor, but it should not be the top floor. Window ACs do not come with 4-way swing, so they don't cool the room as quickly and they consume more electricity. In the case of split ACs, they are more preferable because they come with 4-way swing and cool the room much faster.",
     items: [
