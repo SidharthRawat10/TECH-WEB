@@ -7,10 +7,27 @@ export const categories = [
   "Geyser",
   "External SSD",
   "Laptop",
-  "Phone"
+  "Phone",
+  "Iron"
 ];
 
 export const products = {
+  "Iron": {
+    introText: "",
+    sections: [
+      {
+        title: "Best Steam Irons",
+        items: [
+          {
+            name: "[Waiting for product details...]",
+            description: "Placeholder for a steam iron.",
+            image: "/images/iron_placeholder.png",
+            link: "#"
+          }
+        ]
+      }
+    ]
+  },
   "Phone": {
     introText: "",
     sections: [
