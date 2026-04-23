@@ -1,12 +1,12 @@
 export const categories = [
-  "Laptop",
   "AC",
   "Refrigerator",
   "Airfryer",
   "MacBooks",
   "Washing Machines",
   "Geyser",
-  "External SSD"
+  "External SSD",
+  "Laptop"
 ];
 
 export const products = {
