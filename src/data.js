@@ -16,13 +16,19 @@ export const products = {
     introText: "",
     sections: [
       {
-        title: "Best Steam Irons",
+        title: "BEST DRY IRON UNDER 1000 RUPEES",
         items: [
           {
-            name: "[Waiting for product details...]",
-            description: "Placeholder for a steam iron.",
+            name: "Bajaj DX-6 1000 Watts Dry Iron",
+            description: "Advance Soleplate, Anti-Bacterial German Coating Technology, Thermol Fuse Safety, Auto Shut-Off, Cool Touch Body, 2 Yr Warranty [White]",
             image: "/images/iron_placeholder.png",
-            link: "#"
+            link: "https://amzn.to/4tsA6qf"
+          },
+          {
+            name: "Havells Dry Iron Dazzle 1100 Watts",
+            description: "Greblon Non Sick Soleplate with German Technology, Shock Proof Body, Aerodynamic Design, 360° Swivel Cord, 2 Years Warranty (Black)",
+            image: "/images/iron_placeholder.png",
+            link: "https://amzn.to/3QVNaWx"
           }
         ]
       }
