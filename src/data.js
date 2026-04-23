@@ -6,10 +6,38 @@ export const categories = [
   "Washing Machines",
   "Geyser",
   "External SSD",
-  "Laptop"
+  "Laptop",
+  "Phone"
 ];
 
 export const products = {
+  "Phone": {
+    introText: "",
+    sections: [
+      {
+        title: "Best Android Phones",
+        items: [
+          {
+            name: "[Waiting for product details...]",
+            description: "Placeholder for an Android phone.",
+            image: "/images/tech_product_placeholder.png",
+            link: "#"
+          }
+        ]
+      },
+      {
+        title: "Best iOS Phones",
+        items: [
+          {
+            name: "[Waiting for product details...]",
+            description: "Placeholder for an iPhone.",
+            image: "/images/tech_product_placeholder.png",
+            link: "#"
+          }
+        ]
+      }
+    ]
+  },
   "Laptop": {
     introText: "PRODUCTIVE LAPTOP\n\n🚨 DON'T BUY A LAPTOP AT THIS MOMENT! 🚨\n\nThey are very overpriced right now. If you need to buy something at this point, we highly recommend going to the MacBooks section instead.",
     sections: []
