@@ -15,24 +15,19 @@ export const products = {
     introText: "",
     sections: [
       {
-        title: "Best Android Phones",
+        title: "BEST BUDGET PHONE UNDER 20K",
         items: [
           {
-            name: "[Waiting for product details...]",
-            description: "Placeholder for an Android phone.",
+            name: "Motorola G96 144Hz 3D Curved pOLED",
+            description: "PANTONE Dresden Blue, 8GB RAM, 128GB Storage",
             image: "/images/tech_product_placeholder.png",
-            link: "#"
-          }
-        ]
-      },
-      {
-        title: "Best iOS Phones",
-        items: [
+            link: "https://amzn.to/3QphSHy"
+          },
           {
-            name: "[Waiting for product details...]",
-            description: "Placeholder for an iPhone.",
+            name: "CMF BY NOTHING Phone 2 Pro 5G",
+            description: "Black, 128 GB Storage, 8 GB RAM",
             image: "/images/tech_product_placeholder.png",
-            link: "#"
+            link: "https://amzn.to/4cso9e5"
           }
         ]
       }
