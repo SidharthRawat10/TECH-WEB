@@ -279,10 +279,10 @@ Want premium + best cleaning + efficiency → Go Front Load`,
     introText: "Whether you're a gamer, a programmer, or just looking for a comfortable typing experience, a good keyboard is essential.",
     items: [
       {
-        name: "Logitech MX Keys Advanced",
-        description: "Premium wireless illuminated keyboard for productivity and comfort. Perfect stroke keys.",
+        name: "SpinBot Keyboard",
+        description: "Premium mechanical typing experience with excellent build quality and tactile feedback.",
         image: "/images/keyboard_placeholder.png",
-        link: "#"
+        link: "https://amzn.to/4eysGgy"
       },
       {
         name: "Keychron K2 Wireless Mechanical Keyboard",
