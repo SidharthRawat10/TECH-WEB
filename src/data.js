@@ -8,7 +8,8 @@ export const categories = [
   "External SSD",
   "Laptop",
   "Phone",
-  "Iron"
+  "Iron",
+  "Keyboard"
 ];
 
 export const products = {
@@ -271,6 +272,23 @@ Want premium + best cleaning + efficiency → Go Front Load`,
         description: "USB 3.2, Speed up to 2,000 MB/s Read Speed, Storage for Professional Creators - videographers, Graphic Designers, Artists.",
         image: "/images/ssd_placeholder.png",
         link: "https://amzn.to/4mQC8y4"
+      }
+    ]
+  },
+  "Keyboard": {
+    introText: "Whether you're a gamer, a programmer, or just looking for a comfortable typing experience, a good keyboard is essential.",
+    items: [
+      {
+        name: "Logitech MX Keys Advanced",
+        description: "Premium wireless illuminated keyboard for productivity and comfort. Perfect stroke keys.",
+        image: "/images/keyboard_placeholder.png",
+        link: "#"
+      },
+      {
+        name: "Keychron K2 Wireless Mechanical Keyboard",
+        description: "Compact 84-key RGB backlight bluetooth mechanical keyboard. Great for both Mac and Windows.",
+        image: "/images/keyboard_placeholder.png",
+        link: "#"
       }
     ]
   }
