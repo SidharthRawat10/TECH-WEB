@@ -281,7 +281,7 @@ Want premium + best cleaning + efficiency → Go Front Load`,
       {
         name: "SpinBot Keyboard",
         description: "Premium mechanical typing experience with excellent build quality and tactile feedback.",
-        image: "/images/keyboard_placeholder.png",
+        image: "/images/spinbot_keyboard.png",
         link: "https://amzn.to/4eysGgy"
       },
       {
