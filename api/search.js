@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Query is required' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GeminiAPIKey;
   if (!apiKey) {
     return res.status(500).json({ 
       error: 'GEMINI_API_KEY is not configured on Vercel. Please add GEMINI_API_KEY to your Vercel Environment Variables.' 

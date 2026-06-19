@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize Google Gen AI client
-const apiKey = process.env.GEMINI_API_KEY;
+const apiKey = process.env.GEMINI_API_KEY || process.env.GeminiAPIKey;
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const systemInstruction = `
