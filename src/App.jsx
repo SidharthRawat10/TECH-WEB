@@ -5,7 +5,49 @@ import './index.css';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("AC"); // Set AC as default since we are working on it
+  const [requestText, setRequestText] = useState("");
+  const [submitStatus, setSubmitStatus] = useState("");
   const currentCategoryData = products[activeCategory];
+
+  const handleRequestSubmit = async (e) => {
+    e.preventDefault();
+    if (!requestText.trim()) return;
+
+    setSubmitStatus("Sending suggestion...");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/sidharthrawat684@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          suggestion: requestText,
+          _subject: "TechPicks: New Product/Category Suggestion!"
+        })
+      });
+
+      const data = await response.json();
+      if (data.success === "true" || data.success === true) {
+        setSubmitStatus("Suggestion sent successfully! Thank you.");
+        setRequestText("");
+      } else if (data.message && data.message.includes("Activation")) {
+        setSubmitStatus("Activation required! Check your email (sidharthrawat684@gmail.com) and click 'Activate Form'.");
+        setRequestText("");
+      } else {
+        setSubmitStatus(data.message || "Failed to send suggestion. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting suggestion:", error);
+      setSubmitStatus("Failed to send suggestion. Please try again.");
+    }
+
+    setTimeout(() => {
+      setSubmitStatus("");
+    }, 6000);
+  };
+
 
   return (
     <>
@@ -109,6 +151,32 @@ function App() {
               </div>
             </div>
           )}
+        </section>
+
+        <section className="request-section">
+          <div className="request-card">
+            <div className="request-icon">
+              <Mail size={32} />
+            </div>
+            <div className="request-content">
+              <h2>Can't find what you're looking for?</h2>
+              <p>Tell me what product or category is missing, and I'll find the best deals and add it for you!</p>
+              <form onSubmit={handleRequestSubmit} className="request-form">
+                <input
+                  type="text"
+                  placeholder="e.g., Mechanical Keyboards, 4K Monitors, AC under 30k..."
+                  value={requestText}
+                  onChange={(e) => setRequestText(e.target.value)}
+                  className="request-input"
+                  required
+                />
+                <button type="submit" className="buy-btn request-btn">
+                  Send Request
+                </button>
+              </form>
+              {submitStatus && <p className="submit-status">{submitStatus}</p>}
+            </div>
+          </div>
         </section>
       </main>
       
