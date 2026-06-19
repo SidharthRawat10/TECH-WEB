@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink, Zap, Info, Globe, Share2, Mail, MessageCircle, Search, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
+import { ExternalLink, Zap, Info, Globe, Share2, Mail, MessageCircle } from 'lucide-react';
 import { categories, products } from './data';
 import './index.css';
 
@@ -7,69 +7,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState("AC"); // Set AC as default since we are working on it
   const [requestText, setRequestText] = useState("");
   const [submitStatus, setSubmitStatus] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [loadingStep, setLoadingStep] = useState(0);
-  const [searchResult, setSearchResult] = useState(null);
-  const [searchError, setSearchError] = useState("");
-
   const currentCategoryData = products[activeCategory];
-
-  const loadingSteps = [
-    "Searching Google & organic forums...",
-    "Scanning Reddit comment threads for real opinions...",
-    "Filtering out sponsored content & brand-promoted videos...",
-    "Analyzing tech specs and community consensus...",
-    "Ranking the top products for your budget...",
-    "Generating authentic pros, cons, and affiliate deals..."
-  ];
-
-  useEffect(() => {
-    let interval;
-    if (isLoading) {
-      setLoadingStep(0);
-      interval = setInterval(() => {
-        setLoadingStep((prev) => (prev < loadingSteps.length - 1 ? prev + 1 : prev));
-      }, 2000);
-    } else {
-      setLoadingStep(0);
-    }
-    return () => clearInterval(interval);
-  }, [isLoading]);
-
-  const handleAISearchSubmit = async (e) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
-
-    setIsLoading(true);
-    setSearchError("");
-    setSearchResult(null);
-
-    try {
-      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const apiUrl = isLocalhost ? "http://localhost:5000/api/search" : "/api/search";
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ query: searchQuery })
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setSearchResult(data);
-      } else {
-        setSearchError(data.error || "An error occurred while fetching recommendations.");
-      }
-    } catch (error) {
-      console.error("AI Search Error:", error);
-      setSearchError("Could not connect to the AI search server. Make sure the backend server is running on port 5000.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
 
   const handleRequestSubmit = async (e) => {
     e.preventDefault();
@@ -132,111 +70,6 @@ function App() {
             <div className="hero-visual">
               <img src="/images/hero_visual.png" alt="Abstract Tech Visualization" />
             </div>
-          </div>
-        </section>
-
-        <section className="ai-search-section">
-          <div className="search-container-card">
-            <div className="search-header">
-              <span className="search-badge"><Sparkles size={14} /> AI Product Researcher</span>
-              <h2>Instant Unbiased Tech Research</h2>
-              <p>Search for any product or budget range (e.g. <i>"best AC under 40k"</i>, <i>"gaming keyboard under 5000"</i>). Our AI agent scans real Reddit discussions and YouTube comments to build an honest, ad-free summary and finds deals using your affiliate link.</p>
-            </div>
-            
-            <form onSubmit={handleAISearchSubmit} className="ai-search-form">
-              <div className="search-input-wrapper">
-                <Search className="search-icon-inside" size={20} />
-                <input
-                  type="text"
-                  placeholder="Ask anything... e.g., Best noise cancelling headphones under 15000"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="ai-search-input"
-                  disabled={isLoading}
-                  required
-                />
-              </div>
-              <button type="submit" className="buy-btn ai-search-btn" disabled={isLoading}>
-                {isLoading ? "Researching..." : "Research"}
-              </button>
-            </form>
-
-            {isLoading && (
-              <div className="loading-container">
-                <div className="spinner"></div>
-                <p className="loading-text">{loadingSteps[loadingStep]}</p>
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${((loadingStep + 1) / loadingSteps.length) * 100}%` }}></div>
-                </div>
-              </div>
-            )}
-
-            {searchError && (
-              <div className="search-error-card">
-                <AlertCircle size={24} color="#ef4444" />
-                <p>{searchError}</p>
-              </div>
-            )}
-
-            {searchResult && (
-              <div className="search-results-container">
-                <div className="results-summary">
-                  <div className="summary-title">
-                    <ShieldCheck size={20} color="var(--accent-color)" />
-                    <h3>AI Research Verdict</h3>
-                  </div>
-                  <p>{searchResult.summary}</p>
-                </div>
-
-                <div className="recommended-grid">
-                  {searchResult.products && searchResult.products.map((product, idx) => (
-                    <div className="ai-product-card" key={idx}>
-                      <div className="card-rank">Rank #{idx + 1} Recommendation</div>
-                      <h3 className="product-title">{product.name}</h3>
-                      <p className="product-desc">{product.description}</p>
-                      
-                      {product.specs && (
-                        <div className="product-specs-box">
-                          <strong>Specs:</strong> {product.specs}
-                        </div>
-                      )}
-                      
-                      <div className="why-suggested-box">
-                        <strong>Why we suggest this:</strong> {product.whySuggested}
-                      </div>
-
-                      <div className="pros-cons-grid">
-                        <div className="pros-box">
-                          <h4>Pros</h4>
-                          <ul>
-                            {product.pros && product.pros.map((pro, pIdx) => (
-                              <li key={pIdx}>✓ {pro}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="cons-box">
-                          <h4>Cons</h4>
-                          <ul>
-                            {product.cons && product.cons.map((con, cIdx) => (
-                              <li key={cIdx}>✗ {con}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <a 
-                        href={product.affiliateLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="buy-btn ai-buy-btn"
-                      >
-                        Get the Best Deal on Amazon <ExternalLink size={16} />
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </section>
 
